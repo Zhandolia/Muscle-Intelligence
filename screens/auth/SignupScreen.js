@@ -37,7 +37,7 @@ const SignupScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Signup to posture.ai</Text>
+      <Text style={styles.title}>Signup to Muscle Intelligence</Text>
 
       {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
 

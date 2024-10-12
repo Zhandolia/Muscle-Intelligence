@@ -38,7 +38,7 @@ const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login to posture.ai</Text>
+      <Text style={styles.title}>Login to Muscle Intelligence</Text>
       {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
 
       <TextInput
