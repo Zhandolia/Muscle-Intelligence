@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "aura",
+    "slug": "aura-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "permissions": [
+      "CAMERA",
+      "AUDIO_RECORDING"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.aura",
+      "infoPlist": {
+        "NSCameraUsageDescription": "We need access to your camera to record videos.",
+        "NSMicrophoneUsageDescription": "We need access to your microphone for video recording."
+      }
+    },
+    "android": {
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO"
+      ],
+      "package": "com.yourcompany.aura"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

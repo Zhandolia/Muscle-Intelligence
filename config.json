@@ -1,0 +1,39 @@
+{
+    "expo": {
+      "name": "PostureAI",
+      "slug": "posture-ai",
+      "version": "1.0.0",
+      "orientation": "portrait",
+      "icon": "./assets/icon.png",
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
+      "updates": {
+        "fallbackToCacheTimeout": 0
+      },
+      "assetBundlePatterns": [
+        "**/*"
+      ],
+      "ios": {
+        "supportsTablet": true,
+        "bundleIdentifier": "com.yourcompany.postureai",
+        "infoPlist": {
+          "NSCameraUsageDescription": "We need access to your camera to track your posture during workouts.",
+          "NSPhotoLibraryUsageDescription": "We need access to your photo library to upload images."
+        }
+      },
+      "android": {
+        "permissions": [
+          "CAMERA",
+          "READ_EXTERNAL_STORAGE"
+        ],
+        "package": "com.yourcompany.postureai"
+      },
+      "web": {
+        "favicon": "./assets/favicon.png"
+      }
+    }
+  }
+  
