@@ -19,6 +19,7 @@ import DevicesConnectedScreen from './screens/profile/DevicesConnected';
 import LoginScreen from './screens/auth/LoginScreen';
 import SignupScreen from './screens/auth/SignupScreen';
 import VerificationScreen from './screens/auth/VerificationScreen';
+import { ThemeProvider } from './screens/profile/ThemeContext';
 
 // Stack Navigator for Upload-related pages
 const UploadStack = createStackNavigator();
@@ -107,44 +108,46 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-      <NavigationContainer>
-        {/* Show different navigators based on authentication status */}
-        <SignedIn>
-          <Tab.Navigator
-            initialRouteName="Home"
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => {
-                let iconName;
+      <ThemeProvider>
+        <NavigationContainer>
+          {/* Show different navigators based on authentication status */}
+          <SignedIn>
+            <Tab.Navigator
+              initialRouteName="Home"
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ color, size }) => {
+                  let iconName;
 
-                if (route.name === 'Home') {
-                  iconName = 'home-outline';
-                } else if (route.name === 'Record') {
-                  iconName = 'camera-outline';
-                } else if (route.name === 'Upload') {
-                  iconName = 'cloud-upload-outline';
-                } else if (route.name === 'Profile') {
-                  iconName = 'person-outline';
-                }
+                  if (route.name === 'Home') {
+                    iconName = 'home-outline';
+                  } else if (route.name === 'Record') {
+                    iconName = 'camera-outline';
+                  } else if (route.name === 'Upload') {
+                    iconName = 'cloud-upload-outline';
+                  } else if (route.name === 'Profile') {
+                    iconName = 'person-outline';
+                  }
 
-                return <Icon name={iconName} size={size} color={color} />;
-              },
-              tabBarActiveTintColor: '#F34533',
-              tabBarInactiveTintColor: '#636165',
-              tabBarStyle: { backgroundColor: '#F4F6F8' },
-            })}
-          >
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Record" component={RecordScreen} />
-            <Tab.Screen name="Upload" component={UploadStackScreen} />
-            <Tab.Screen name="Profile" component={ProfileStackScreen} />
-          </Tab.Navigator>
-        </SignedIn>
+                  return <Icon name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: '#F34533',
+                tabBarInactiveTintColor: '#636165',
+                tabBarStyle: { backgroundColor: '#F4F6F8' },
+              })}
+            >
+              <Tab.Screen name="Home" component={HomeScreen} />
+              <Tab.Screen name="Record" component={RecordScreen} />
+              <Tab.Screen name="Upload" component={UploadStackScreen} />
+              <Tab.Screen name="Profile" component={ProfileStackScreen} />
+            </Tab.Navigator>
+          </SignedIn>
 
-        {/* Auth Flow when user is not signed in */}
-        <SignedOut>
-          <AuthStackScreen />
-        </SignedOut>
-      </NavigationContainer>
+          {/* Auth Flow when user is not signed in */}
+          <SignedOut>
+            <AuthStackScreen />
+          </SignedOut>
+        </NavigationContainer>
+      </ThemeProvider>
     </ClerkProvider>
   );
 }
