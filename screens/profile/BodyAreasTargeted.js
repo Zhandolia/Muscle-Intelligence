@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { useTheme } from './ThemeContext';
+import { useTheme } from './ThemeContext';  // Import the useTheme hook
 
 const BodyAreasTargetedScreen = () => {
-  const { theme } = useTheme();
-  const isDarkTheme = theme === 'dark';
+  const { theme } = useTheme();  // Access the current theme
+  const isDarkTheme = theme === 'dark';  // Determine if the theme is dark
 
   const bodyAreas = ['Chest', 'Back', 'Arms', 'Legs', 'Core', 'Shoulders'];
 
@@ -13,8 +13,8 @@ const BodyAreasTargetedScreen = () => {
       <Text style={[styles.title, isDarkTheme ? styles.darkText : styles.lightText]}>Body Areas Targeted</Text>
       <View style={styles.grid}>
         {bodyAreas.map((area, index) => (
-          <TouchableOpacity key={index} style={styles.areaContainer}>
-            <Text style={styles.areaText}>{area}</Text>
+          <TouchableOpacity key={index} style={isDarkTheme ? styles.darkAreaContainer : styles.lightAreaContainer}>
+            <Text style={[styles.areaText, isDarkTheme ? styles.darkText : styles.lightText]}>{area}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -25,34 +25,52 @@ const BodyAreasTargetedScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
     padding: 20,
+  },
+  lightContainer: {
+    backgroundColor: '#F9FAFB',  // Light background for light theme
+  },
+  darkContainer: {
+    backgroundColor: '#1D1C1F',  // Dark background for dark theme (darker than before)
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#1D1C1F',
     marginBottom: 20,
     textAlign: 'center',
+  },
+  lightText: {
+    color: '#1D1C1F',  // Dark text for light theme
+  },
+  darkText: {
+    color: '#E0E0E0',  // Light grey text for dark theme to make it readable
   },
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
-  areaContainer: {
-    width: '48%',
-    backgroundColor: '#F4F6F8',
-    padding: 15,
-    borderRadius: 10,
+  lightAreaContainer: {
+    backgroundColor: '#F4F6F8',  // Light background for areas in light theme
+    flexBasis: '48%',  // Each area container takes up 48% of the row width
     marginBottom: 10,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 15,
+  },
+  darkAreaContainer: {
+    backgroundColor: '#2D2D2D',  // Darker background for areas in dark theme
+    flexBasis: '48%',  // Each area container takes up 48% of the row width
+    marginBottom: 10,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
   },
   areaText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#636165',
   },
 });
 
