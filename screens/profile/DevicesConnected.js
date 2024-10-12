@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { useTheme } from './ThemeContext';
 
 const DevicesConnectedScreen = () => {
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
+
   const deviceData = [
     { label: 'Garmin Watch', value: 'Connected' },
     { label: 'Apple Watch', value: 'Connected' },
@@ -9,11 +13,11 @@ const DevicesConnectedScreen = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Connected Devices</Text>
+    <ScrollView style={[styles.container, isDarkTheme ? styles.darkContainer : styles.lightContainer]}>
+      <Text style={[styles.title, isDarkTheme ? styles.darkText : styles.lightText]}>Connected Devices</Text>
       {deviceData.map((item, index) => (
-        <View key={index} style={styles.dataContainer}>
-          <Text style={styles.dataLabel}>{item.label}</Text>
+        <View key={index} style={[styles.dataContainer, isDarkTheme ? styles.darkSetting : styles.lightSetting]}>
+          <Text style={[styles.dataLabel, isDarkTheme ? styles.darkText : styles.lightText]}>{item.label}</Text>
           <Text style={styles.dataValue}>{item.value}</Text>
         </View>
       ))}
@@ -24,27 +28,41 @@ const DevicesConnectedScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB',
     padding: 20,
+  },
+  lightContainer: {
+    backgroundColor: '#F9FAFB',
+  },
+  darkContainer: {
+    backgroundColor: '#1D1C1F',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#1D1C1F',
     marginBottom: 20,
     textAlign: 'center',
   },
+  lightText: {
+    color: '#1D1C1F',
+  },
+  darkText: {
+    color: '#F9FAFB',
+  },
   dataContainer: {
-    backgroundColor: '#F4F6F8',
     padding: 20,
     borderRadius: 10,
     marginBottom: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  lightSetting: {
+    backgroundColor: '#F4F6F8',
+  },
+  darkSetting: {
+    backgroundColor: '#2D2D2D',
+  },
   dataLabel: {
     fontSize: 16,
-    color: '#636165',
   },
   dataValue: {
     fontSize: 18,

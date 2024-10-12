@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, Switch, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { useAuth } from '@clerk/clerk-expo';
+import { useTheme } from './ThemeContext';  // Import the useTheme hook
 
 const SettingsScreen = () => {
+  const { signOut } = useAuth();
+  const { theme, toggleTheme } = useTheme();  // Get theme and toggleTheme from context
+
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [language, setLanguage] = useState('English');
   const [units, setUnits] = useState('Metric');
-  const [theme, setTheme] = useState('Use Device Settings');
-  const { signOut } = useAuth();
 
   const toggleLanguage = () => {
     setLanguage((prevLanguage) => (prevLanguage === 'English' ? 'Spanish' : 'English'));
@@ -22,9 +24,9 @@ const SettingsScreen = () => {
       "Choose Theme",
       "Select the app display theme:",
       [
-        { text: "Black", onPress: () => setTheme("Black") },
-        { text: "White", onPress: () => setTheme("White") },
-        { text: "Use Device Settings", onPress: () => setTheme("Use Device Settings"), style: "cancel" },
+        { text: "Black", onPress: () => toggleTheme('Black') },  // Use toggleTheme to update global theme
+        { text: "White", onPress: () => toggleTheme('White') },
+        { text: "Use Device Settings", onPress: () => toggleTheme('Use Device Settings'), style: "cancel" },
       ],
       { cancelable: true }
     );
@@ -34,12 +36,12 @@ const SettingsScreen = () => {
     signOut();
   };
 
-  const isDarkTheme = theme === 'Black';
+  const isDarkTheme = theme === 'dark';  // Check if the theme is dark
 
   return (
     <View style={[styles.container, isDarkTheme ? styles.darkContainer : styles.lightContainer]}>
       <Text style={[styles.title, isDarkTheme ? styles.darkText : styles.lightText]}>Settings</Text>
-      
+
       <View style={[styles.setting, isDarkTheme ? styles.darkSetting : styles.lightSetting]}>
         <Text style={[styles.settingText, isDarkTheme ? styles.darkText : styles.lightText]}>Enable Notifications</Text>
         <Switch
@@ -47,7 +49,7 @@ const SettingsScreen = () => {
           onValueChange={setNotificationsEnabled}
         />
       </View>
-      
+
       <TouchableOpacity style={[styles.setting, isDarkTheme ? styles.darkSetting : styles.lightSetting]} onPress={toggleLanguage}>
         <Text style={[styles.settingText, isDarkTheme ? styles.darkText : styles.lightText]}>Language</Text>
         <Text style={styles.unitText}>{language}</Text>
@@ -60,7 +62,7 @@ const SettingsScreen = () => {
 
       <TouchableOpacity style={[styles.setting, isDarkTheme ? styles.darkSetting : styles.lightSetting]} onPress={chooseTheme}>
         <Text style={[styles.settingText, isDarkTheme ? styles.darkText : styles.lightText]}>Theme</Text>
-        <Text style={styles.unitText}>{theme}</Text>
+        <Text style={styles.unitText}>{theme === 'dark' ? 'Black' : 'White'}</Text>
       </TouchableOpacity>
 
       {/* Sign Out Button */}

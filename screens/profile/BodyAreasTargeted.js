@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useTheme } from './ThemeContext';
 
 const BodyAreasTargetedScreen = () => {
+  const { theme } = useTheme();
+  const isDarkTheme = theme === 'dark';
+
   const bodyAreas = ['Chest', 'Back', 'Arms', 'Legs', 'Core', 'Shoulders'];
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Body Areas Targeted</Text>
+    <ScrollView style={[styles.container, isDarkTheme ? styles.darkContainer : styles.lightContainer]}>
+      <Text style={[styles.title, isDarkTheme ? styles.darkText : styles.lightText]}>Body Areas Targeted</Text>
       <View style={styles.grid}>
         {bodyAreas.map((area, index) => (
           <TouchableOpacity key={index} style={styles.areaContainer}>
