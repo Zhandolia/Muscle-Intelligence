@@ -2,35 +2,38 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const FinalVideo = () => {
+const StasSample = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Analyzed Video</Text>
+      <Text style={styles.title}>Push Ups Example</Text>
       <View style={styles.videoContainer}>
         <Image 
-          source={require('../../assets/wrong_try_marked_colored.gif')} 
+          source={require('../../assets/sample_try_marked_colored.gif')} 
           style={styles.video} 
         />
       </View>
       <View style={styles.textContainer}>
-        <Text style={[styles.text, styles.green]}>
-          <Text style={styles.boldText}>Perfect Area </Text>
-          Triceps, Core, Chest
+        <Text style={[styles.text]}>
+          <Text style={styles.boldText}>1. </Text>
+          Position hands shoulder-width apart.
         </Text>
-        <Text style={[styles.text, styles.orange]}>
-          <Text style={styles.boldText}>Needs Work </Text>
-          Biceps
+        <Text style={[styles.text]}>
+          <Text style={styles.boldText}>2. </Text>
+          Keep body in straight line.
         </Text>
-        <Text style={[styles.text, styles.red]}>
-          <Text style={styles.boldText}>Under Danger </Text>
-          Shoulders
+        <Text style={[styles.text]}>
+          <Text style={styles.boldText}>3. </Text>
+          Lower chest, then push up.
         </Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ExampleVideo')}>
-        <Text style={styles.buttonText}>See example video →</Text>
-      </TouchableOpacity>
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={() => navigation.navigate('UploadAlpha')}
+        >
+        <Text style={styles.buttonText}>Resubmit Video</Text>
+        </TouchableOpacity>
     </View>
   );
 };
@@ -95,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FinalVideo;
+export default StasSample;

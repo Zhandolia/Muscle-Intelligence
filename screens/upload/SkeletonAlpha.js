@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const AnalyzedVideo = () => {
+const SkeletonAlpha = () => {
   const navigation = useNavigation();
 
   return (
@@ -10,7 +10,7 @@ const AnalyzedVideo = () => {
       <Text style={styles.title}>Confirm Skeleton</Text>
       <View style={styles.videoContainer}>
         <Image 
-          source={require('../../assets/wrong_try_marked.gif')} 
+          source={require('../../assets/correct_try_marked.gif')} 
           style={styles.video} 
         />
       </View>
@@ -24,7 +24,7 @@ const AnalyzedVideo = () => {
       </TouchableOpacity>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => navigation.navigate('GenerateLoading')}
+        onPress={() => navigation.navigate('LoadingAlphaTwo')}
       >
         <Text style={styles.buttonText}>Confirm →</Text>
       </TouchableOpacity>
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnalyzedVideo;
+export default SkeletonAlpha;

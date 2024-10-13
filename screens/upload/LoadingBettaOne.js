@@ -8,7 +8,7 @@ const AnalyzingVideo = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('AnalyzedVideo'); // Navigate after 3 seconds
+      navigation.navigate('SkeletonBetta'); // Navigate after 3 seconds
     }, 3000);
     return () => clearTimeout(timer);
   }, [navigation]);

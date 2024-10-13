@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Polyline } from 'react-native-svg';
 
-const GenerateLoading = () => {
+const LoadingAlphaOne = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('FinalVideo'); // Navigate after 3 seconds
+      navigation.navigate('SkeletonAlpha'); // Navigate after 3 seconds
     }, 3000);
     return () => clearTimeout(timer);
   }, [navigation]);
@@ -29,10 +29,7 @@ const GenerateLoading = () => {
           />
         </Svg>
       </View>
-      <Text style={styles.text}>Finalizing Video</Text>
-      {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FinalVideo')}>
-        <Text style={styles.buttonText}>Next →</Text>
-      </TouchableOpacity> */}
+      <Text style={styles.text}>Analyzing Video</Text>
     </View>
   );
 };
@@ -85,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GenerateLoading;
+export default LoadingAlphaOne;

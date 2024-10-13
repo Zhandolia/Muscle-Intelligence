@@ -8,11 +8,17 @@ import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
 
 import HomeScreen from './screens/home/HomeScreen';
 import RecordScreen from './screens/record/RecordScreen';
-import UploadScreen from './screens/upload/ChooseVideo';
-import AnalyzingVideo from './screens/upload/AnalyzingVideo';
-import AnalyzedVideo from './screens/upload/AnalyzedVideo';
-import GenerateLoading from './screens/upload/GenerateLoading';
-import FinalVideo from './screens/upload/FinalVideo';
+import UploadBetta from './screens/upload/UploadBetta';
+import LoadingBettaOne from './screens/upload/LoadingBettaOne';
+import SkeletonBetta from './screens/upload/SkeletonBetta';
+import LoadingBettaTwo from './screens/upload/LoadingBettaTwo';
+import FinalBetta from './screens/upload/FinalBetta';
+import StasSample from './screens/upload/StasSample';
+import UploadAlpha from './screens/upload/UploadAlpha';
+import LoadingAlphaOne from './screens/upload/LoadingAlphaOne';
+import SkeletonAlpha from './screens/upload/SkeletonAlpha';
+import LoadingAlphaTwo from './screens/upload/LoadingAlphaTwo';
+import FinalAlpha from './screens/upload/FinalAlpha';
 
 import ProfileScreen from './screens/profile/ProfileScreen';
 import WorkoutHistoryScreen from './screens/profile/WorkoutHistoryScreen';
@@ -44,11 +50,17 @@ function AuthStackScreen() {
 function UploadStackScreen() {
   return (
     <UploadStack.Navigator>
-      <UploadStack.Screen name="Upload" component={UploadScreen} options={{ headerShown: false }} />
-      <UploadStack.Screen name="AnalyzingVideo" component={AnalyzingVideo} options={{ headerShown: false }} />
-      <UploadStack.Screen name="AnalyzedVideo" component={AnalyzedVideo} options={{ headerShown: false }} />
-      <UploadStack.Screen name="GenerateLoading" component={GenerateLoading} options={{ headerShown: false }} />
-      <UploadStack.Screen name="FinalVideo" component={FinalVideo} options={{ headerShown: false }} />
+      <UploadStack.Screen name="UploadBetta" component={UploadBetta} options={{ headerShown: false }} />
+      <UploadStack.Screen name="LoadingBettaOne" component={LoadingBettaOne} options={{ headerShown: false }} />
+      <UploadStack.Screen name="SkeletonBetta" component={SkeletonBetta} options={{ headerShown: false }} />
+      <UploadStack.Screen name="LoadingBettaTwo" component={LoadingBettaTwo} options={{ headerShown: false }} />
+      <UploadStack.Screen name="FinalBetta" component={FinalBetta} options={{ headerShown: false }} />
+      <UploadStack.Screen name="StasSample" component={StasSample} options={{ headerShown: false }} />
+      <UploadStack.Screen name="UploadAlpha" component={UploadAlpha} options={{ headerShown: false }} />
+      <UploadStack.Screen name="LoadingAlphaOne" component={LoadingAlphaOne} options={{ headerShown: false }} />
+      <UploadStack.Screen name="SkeletonAlpha" component={SkeletonAlpha} options={{ headerShown: false }} />
+      <UploadStack.Screen name="LoadingAlphaTwo" component={LoadingAlphaTwo} options={{ headerShown: false }} />
+      <UploadStack.Screen name="FinalAlpha" component={FinalAlpha} options={{ headerShown: false }} />
     </UploadStack.Navigator>
   );
 }
