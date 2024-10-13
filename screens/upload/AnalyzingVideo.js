@@ -4,28 +4,37 @@ import { useNavigation } from '@react-navigation/native';
 import Svg, { Polyline } from 'react-native-svg';
 
 const AnalyzingVideo = () => {
-    const navigation = useNavigation();
-    
-    return (
-      <View style={styles.container}>
-        <View className="loading">
-          <Svg width="64px" height="48px">
-            <Polyline
-              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
-              id="back"
-            />
-            <Polyline
-              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
-              id="front"
-            />
-          </Svg>
-        </View>
-        <Text style={styles.text}>Analyzing Video</Text>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AnalyzedVideo')}>
-          <Text style={styles.buttonText}>Next →</Text>
-        </TouchableOpacity>
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate('AnalyzedVideo'); // Navigate after 3 seconds
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [navigation]);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.loading}>
+        <Svg width="64px" height="48px">
+          <Polyline
+            points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+            id="back"
+            style={styles.back}
+          />
+          <Polyline
+            points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+            id="front"
+            style={styles.front}
+          />
+        </Svg>
       </View>
-    );
+      <Text style={styles.text}>Analyzing Video</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AnalyzedVideo')}>
+        <Text style={styles.buttonText}>Next →</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -34,6 +43,30 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FAFB',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  loading: {
+    marginBottom: 20,
+  },
+  back: {
+    fill: 'none',
+    stroke: '#F4F6F8',
+    strokeWidth: 3,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+  },
+  front: {
+    fill: 'none',
+    stroke: '#F34533',
+    strokeWidth: 3,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    strokeDasharray: '48, 144',
+    strokeDashoffset: 192,
+    animationKeyframes: [
+      { '72.5%': { opacity: 0 } },
+      { to: { strokeDashoffset: 0 } },
+    ],
+    animation: 'dash 1.4s linear infinite',
   },
   text: {
     marginTop: 20,

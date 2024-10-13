@@ -1,19 +1,21 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Svg, { Polyline } from 'react-native-svg';
+import { useNavigation } from '@react-navigation/native';
 
 const AnalyzedVideo = () => {
+    const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Analyzed Video</Text>
+      <Text style={styles.title}>Confirm Skeleton</Text>
       <Svg width="64px" height="48px">
         <Image source={require('../../assets/output1.gif')} style={styles.video} />
       </Svg>
-      <Text style={[styles.text, styles.green]}>Perfect Area: Triceps, Core, Chest</Text>
-      <Text style={[styles.text, styles.orange]}>Needs Work: Biceps</Text>
-      <Text style={[styles.text, styles.red]}>Under Danger: Shoulders</Text>
+      <TouchableOpacity>
+        <Text style={[styles.text, styles.orange]}>Didn’t match? Regenerate here!</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>See example video →</Text>
+        <Text style={styles.buttonText}>Confirm →</Text>
       </TouchableOpacity>
     </View>
   );
@@ -41,14 +43,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
   },
-  green: {
-    color: '#27AE60',
-  },
   orange: {
-    color: '#E67E22',
-  },
-  red: {
-    color: '#E74C3C',
+    color: '#F34533',
   },
   button: {
     marginTop: 20,

@@ -46,6 +46,7 @@
     "react-native-screens": "^3.34.0",
     "react-native-svg": "15.2.0",
     "react-native-vector-icons": "^10.2.0",
+    "react-native-video": "^6.6.4",
     "react-native-web": "~0.19.10",
     "react-viro": "^2.17.0",
     "three": "^0.168.0"
