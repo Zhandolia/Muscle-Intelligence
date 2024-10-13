@@ -327,7 +327,7 @@ def draw_prediction_on_image(
     ax.imshow(image)
 
     # Prepare keypoints and edges for display
-    (keypoint_locs, keypoint_edges, edge_colors) = _keypoints_and_edges_for_display(
+    (keypoint_locs, keypoint_edges, _) = _keypoints_and_edges_for_display(
         keypoints_with_scores, height, width)
 
     # Set colors for keypoints
@@ -337,13 +337,31 @@ def draw_prediction_on_image(
             if keypoints_to_mark is not None and idx in keypoints_to_mark:
                 keypoint_colors.append('red')
             else:
-                keypoint_colors.append('green')  # Default color
+                keypoint_colors.append('green')  # Correct keypoints in green
         scat = ax.scatter(keypoint_locs[:, 0], keypoint_locs[:, 1], s=60, color=keypoint_colors, zorder=3)
 
-    # Plot edges
+    # Set colors for edges based on the correctness of connected keypoints
     if keypoint_edges.shape[0]:
-        line_segments = LineCollection(keypoint_edges, linewidths=(4), linestyle='solid')
-        line_segments.set_color(edge_colors)
+        edge_colors = []
+        for edge in keypoint_edges:
+            # Find indices of the start and end keypoints
+            start_point = edge[0]
+            end_point = edge[1]
+            start_idx = np.where((keypoint_locs == start_point).all(axis=1))[0][0]
+            end_idx = np.where((keypoint_locs == end_point).all(axis=1))[0][0]
+
+            start_incorrect = keypoints_to_mark is not None and start_idx in keypoints_to_mark
+            end_incorrect = keypoints_to_mark is not None and end_idx in keypoints_to_mark
+
+            if start_incorrect and end_incorrect:
+                edge_colors.append('red')  # Both keypoints incorrect
+            elif start_incorrect or end_incorrect:
+                edge_colors.append('yellow')  # One keypoint incorrect
+            else:
+                edge_colors.append('green')  # Both keypoints correct
+
+        # Plot edges with updated colors
+        line_segments = LineCollection(keypoint_edges, linewidths=(4), colors=edge_colors, linestyle='solid')
         ax.add_collection(line_segments)
 
     # Save the figure to a buffer
@@ -367,6 +385,7 @@ def draw_prediction_on_image(
             image_from_plot, dsize=(output_image_width, output_image_height),
             interpolation=cv2.INTER_CUBIC)
     return image_from_plot
+
 
 # Function to compute per-frame, per-keypoint cosine similarities
 def compute_per_frame_keypoint_similarity(ref_kpts, target_kpts):
