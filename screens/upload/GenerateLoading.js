@@ -29,10 +29,10 @@ const GenerateLoading = () => {
           />
         </Svg>
       </View>
-      <Text style={styles.text}>Analyzing Video</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FinalVideo')}>
+      <Text style={styles.text}>Finalizing Video</Text>
+      {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FinalVideo')}>
         <Text style={styles.buttonText}>Next →</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };

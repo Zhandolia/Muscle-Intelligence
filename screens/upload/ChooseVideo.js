@@ -11,7 +11,7 @@ const ChooseVideo = () => {
     setTimeout(() => navigation.navigate('AnalyzingVideo'), 300); // navigate after 300 ms
   };
 
-  const videos = Array(6).fill(require('../../assets/pushup.gif'));
+  const videos = Array(1).fill(require('../../assets/wrong_try.gif'));
 
   return (
     <View style={styles.container}>

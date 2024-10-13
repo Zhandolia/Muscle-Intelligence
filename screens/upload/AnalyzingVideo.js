@@ -30,9 +30,9 @@ const AnalyzingVideo = () => {
         </Svg>
       </View>
       <Text style={styles.text}>Analyzing Video</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AnalyzedVideo')}>
+      {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AnalyzedVideo')}>
         <Text style={styles.buttonText}>Next →</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };

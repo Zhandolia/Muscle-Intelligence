@@ -1,22 +1,30 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import Svg, { Polyline } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/native';
 
 const AnalyzedVideo = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Confirm Skeleton</Text>
-      <Svg width="64px" height="48px">
-        <Image source={require('../../assets/output1.gif')} style={styles.video} />
-      </Svg>
+      <View style={styles.videoContainer}>
+        <Image 
+          source={require('../../assets/wrong_try_marked.gif')} 
+          style={styles.video} 
+        />
+      </View>
+      <Text style={styles.subtext}>
+        Please confirm if the model matched skeleton
+      </Text>
       <TouchableOpacity>
-        <Text style={[styles.text, styles.orange]}>Didn’t match? Regenerate here!</Text>
+        <Text style={styles.regenerateText}>
+          Didn’t match? Regenerate here!
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => navigation.navigate('GenerateLoading')} // Navigate to GenerateLoading
+        onPress={() => navigation.navigate('GenerateLoading')}
       >
         <Text style={styles.buttonText}>Confirm →</Text>
       </TouchableOpacity>
@@ -30,6 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FAFB',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 24,
@@ -37,27 +46,41 @@ const styles = StyleSheet.create({
     color: '#1D1C1F',
     marginBottom: 20,
   },
-  video: {
+  videoContainer: {
     width: 300,
-    height: 200,
+    height: 300,
+    backgroundColor: '#E0E0E0', // Grey background as per design
     marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  text: {
+  video: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
+  subtext: {
     fontSize: 16,
-    marginBottom: 5,
+    color: '#1D1C1F',
+    marginBottom: 10,
   },
-  orange: {
+  regenerateText: {
+    fontSize: 16,
     color: '#F34533',
+    marginBottom: 20,
+    textDecorationLine: 'underline',
   },
   button: {
-    marginTop: 20,
     backgroundColor: '#F34533',
-    padding: 10,
+    padding: 15,
     borderRadius: 5,
+    alignItems: 'center',
+    width: '60%',
   },
   buttonText: {
     color: '#F9FAFB',
     fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
