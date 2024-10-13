@@ -11,6 +11,9 @@ import RecordScreen from './screens/record/RecordScreen';
 import UploadScreen from './screens/upload/ChooseVideo';
 import AnalyzingVideo from './screens/upload/AnalyzingVideo';
 import AnalyzedVideo from './screens/upload/AnalyzedVideo';
+import GenerateLoading from './screens/upload/GenerateLoading';
+import FinalVideo from './screens/upload/FinalVideo';
+
 import ProfileScreen from './screens/profile/ProfileScreen';
 import WorkoutHistoryScreen from './screens/profile/WorkoutHistoryScreen';
 import BodyAreasTargetedScreen from './screens/profile/BodyAreasTargeted';
@@ -44,6 +47,8 @@ function UploadStackScreen() {
       <UploadStack.Screen name="Upload" component={UploadScreen} options={{ headerShown: false }} />
       <UploadStack.Screen name="AnalyzingVideo" component={AnalyzingVideo} options={{ headerShown: false }} />
       <UploadStack.Screen name="AnalyzedVideo" component={AnalyzedVideo} options={{ headerShown: false }} />
+      <UploadStack.Screen name="GenerateLoading" component={GenerateLoading} options={{ headerShown: false }} />
+      <UploadStack.Screen name="FinalVideo" component={FinalVideo} options={{ headerShown: false }} />
     </UploadStack.Navigator>
   );
 }
