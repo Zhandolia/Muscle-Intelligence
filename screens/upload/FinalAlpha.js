@@ -26,7 +26,7 @@ const FinalAlpha = () => {
       </View>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => navigation.navigate('UploadBetta')}
+        onPress={() => navigation.navigate('UploadGamma')}
         >
         <Text style={styles.buttonText}>Return Back</Text>
         </TouchableOpacity>

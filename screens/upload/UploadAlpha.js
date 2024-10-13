@@ -68,26 +68,6 @@ const UploadAlpha = () => {
           )}
         </View>
       )}
-
-      {uploadHistory.length > 0 && (
-        <View style={styles.historyContainer}>
-          <Text style={styles.historyTitle}>Upload History</Text>
-          <View style={styles.grid}>
-            {uploadHistory.map((video, index) => (
-              <TouchableOpacity
-                key={index}
-                onPress={() => handleSelect(index)}
-                style={styles.historyItem}
-              >
-                <Image 
-                  source={{ uri: video.uri }} 
-                  style={styles.videoThumbnail} 
-                />
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-      )}
     </View>
   );
 };
@@ -106,7 +86,7 @@ const styles = StyleSheet.create({
   uploadText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#4F46E5',
+    color: '#F34533',
     textDecorationLine: 'underline',
     marginBottom: 10,
   },

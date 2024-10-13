@@ -19,6 +19,7 @@ import LoadingAlphaOne from './screens/upload/LoadingAlphaOne';
 import SkeletonAlpha from './screens/upload/SkeletonAlpha';
 import LoadingAlphaTwo from './screens/upload/LoadingAlphaTwo';
 import FinalAlpha from './screens/upload/FinalAlpha';
+import UploadGamma from './screens/upload/UploadGamma';
 
 import ProfileScreen from './screens/profile/ProfileScreen';
 import WorkoutHistoryScreen from './screens/profile/WorkoutHistoryScreen';
@@ -61,6 +62,7 @@ function UploadStackScreen() {
       <UploadStack.Screen name="SkeletonAlpha" component={SkeletonAlpha} options={{ headerShown: false }} />
       <UploadStack.Screen name="LoadingAlphaTwo" component={LoadingAlphaTwo} options={{ headerShown: false }} />
       <UploadStack.Screen name="FinalAlpha" component={FinalAlpha} options={{ headerShown: false }} />
+      <UploadStack.Screen name="UploadGamma" component={UploadGamma} options={{ headerShown: false }} />
     </UploadStack.Navigator>
   );
 }

@@ -12,7 +12,7 @@ import {
 import * as DocumentPicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
-const UploadBetta = () => {
+const UploadGamma = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadHistory, setUploadHistory] = useState([]);
@@ -33,7 +33,7 @@ const UploadBetta = () => {
   };
 
   const handleSelect = (index) => {
-    setTimeout(() => navigation.navigate('LoadingBettaOne'), 300);
+    setTimeout(() => navigation.navigate('LoadingAlphaOne'), 300);
   };
 
   return (
@@ -50,11 +50,11 @@ const UploadBetta = () => {
       {selectedVideo && (
         <View style={styles.uploadSection}>
           <Image 
-            source={require('../../assets/wrong_try.gif')} 
+            source={require('../../assets/correct_try.gif')} 
             style={styles.videoPreview} 
           />
           <TouchableOpacity 
-            onPress={() => navigation.navigate('LoadingBettaOne')} 
+            onPress={() => navigation.navigate('LoadingAlphaOne')} 
             style={styles.analyzeButton}
             disabled={uploading}
           >
@@ -147,4 +147,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UploadBetta;
+export default UploadGamma;
