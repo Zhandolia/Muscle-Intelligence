@@ -8,8 +8,9 @@ import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
 
 import HomeScreen from './screens/home/HomeScreen';
 import RecordScreen from './screens/record/RecordScreen';
-import UploadScreen from './screens/upload/UploadScreen';
-import VideoUploadScreen from './screens/upload/VideoUploadScreen';
+import UploadScreen from './screens/upload/ChooseVideo';
+import AnalyzingVideo from './screens/upload/AnalyzingVideo';
+import AnalyzedVideo from './screens/upload/AnalyzedVideo';
 import ProfileScreen from './screens/profile/ProfileScreen';
 import WorkoutHistoryScreen from './screens/profile/WorkoutHistoryScreen';
 import BodyAreasTargetedScreen from './screens/profile/BodyAreasTargeted';
@@ -41,7 +42,8 @@ function UploadStackScreen() {
   return (
     <UploadStack.Navigator>
       <UploadStack.Screen name="Upload" component={UploadScreen} options={{ headerShown: false }} />
-      <UploadStack.Screen name="VideoUpload" component={VideoUploadScreen} options={{ headerShown: false }} />
+      <UploadStack.Screen name="AnalyzingVideo" component={AnalyzingVideo} options={{ headerShown: false }} />
+      <UploadStack.Screen name="AnalyzedVideo" component={AnalyzedVideo} options={{ headerShown: false }} />
     </UploadStack.Navigator>
   );
 }
