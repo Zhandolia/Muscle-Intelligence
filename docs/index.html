@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muscle Intelligence · Interactive demo</title>
+  <meta name="description" content="Explore the Muscle Intelligence mobile prototype: workout video, pose overlay, and form feedback.">
+  <meta name="theme-color" content="#F34533">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to demo</a>
+  <header class="header">
+    <a class="brand" href="./" aria-label="Muscle Intelligence home"><span class="brand-icon" aria-hidden="true">m<span>i</span></span><span>Muscle<br>Intelligence</span></a>
+    <nav aria-label="Demo views"><button class="nav active" data-view="analysis" aria-pressed="true">Analyze</button><button class="nav" data-view="compare" aria-pressed="false">Compare attempts</button></nav>
+    <span class="demo-badge"><i></i> Interactive demo</span>
+  </header>
+  <main id="main">
+    <div class="heading"><div><p class="eyebrow">MOVEMENT, MADE VISIBLE</p><h1>See your form. Find your focus.</h1></div><button class="reset subtle" type="button">Reset demo <span aria-hidden="true">↻</span></button></div>
+    <p class="intro">Explore the mobile app’s push-up workflow with original sample videos and prerecorded pose overlays.</p>
+
+    <section id="analysis-view" aria-label="Analyze a sample">
+      <div class="workspace">
+        <aside class="samples" aria-label="Choose a video">
+          <p class="eyebrow">YOUR SESSION</p><h2>Choose a clip</h2>
+          <button class="sample selected" data-attempt="first" aria-pressed="true"><img src="assets/wrong_try.jpg" alt="" width="600" height="338"><span><strong>First attempt</strong><small>Push-up · Sample 01</small></span><span class="sample-arrow" aria-hidden="true">↗</span></button>
+          <button class="sample" data-attempt="second" aria-pressed="false"><img src="assets/correct_try.jpg" alt="" width="600" height="338"><span><strong>Second attempt</strong><small>Push-up · Sample 02</small></span><span class="sample-arrow" aria-hidden="true">↗</span></button>
+          <div class="local-upload"><button id="pick-file" class="subtle" type="button"><span aria-hidden="true">＋</span> Preview your own video</button><input id="file-input" type="file" accept="video/*" hidden><p>Plays locally in your browser. Demo feedback is available for the sample clips only.</p></div>
+        </aside>
+
+        <div class="analysis">
+          <div class="analysis-head"><div><span class="eyebrow" id="clip-label">SAMPLE 01 / PUSH-UP</span><h2 id="stage-heading" tabindex="-1">Start with the movement</h2></div><span class="step-count" id="step-count">01 / 03</span></div>
+          <div class="stages" role="group" aria-label="Analysis steps"><button data-stage="0" class="current" aria-pressed="true"><span>1</span> Original</button><button data-stage="1" aria-pressed="false"><span>2</span> Skeleton</button><button data-stage="2" aria-pressed="false"><span>3</span> Feedback</button></div>
+          <div class="player-wrap"><video id="main-video" controls playsinline loop muted preload="metadata" poster="assets/wrong_try.jpg" aria-label="First attempt workout video" src="assets/wrong_try.mp4"></video><span class="video-label" id="video-label">ORIGINAL CLIP</span></div>
+          <p class="media-error" id="media-error" role="alert" hidden></p>
+          <div class="player-bottom"><p id="stage-description">Watch the sample, then reveal the pose overlay.</p><button id="next-step" class="primary">View skeleton <span aria-hidden="true">→</span></button></div>
+          <div id="feedback" class="feedback" hidden aria-label="Sample feedback"><div class="feedback-title"><h3>Where to focus</h3><span>Preset sample feedback</span></div><div class="feedback-grid" id="feedback-grid"></div><button id="show-reference" class="subtle" aria-expanded="false" aria-controls="reference">View reference example <span aria-hidden="true">↗</span></button><div id="reference" hidden><h3>Reference push-up</h3><video id="reference-video" controls playsinline loop muted preload="none" poster="assets/sample_try_marked_colored.jpg" src="assets/sample_try_marked_colored.mp4" aria-label="Prerecorded reference push-up"></video><p>Example clip and overlay from the mobile prototype.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compare-view" hidden aria-labelledby="compare-heading">
+      <div class="comparison-head"><div><p class="eyebrow">TWO ATTEMPTS, ONE MOVEMENT</p><h2 id="compare-heading" tabindex="-1">A clearer picture of progress</h2></div><button id="play-both" class="primary">Play both clips</button></div>
+      <div class="compare-grid"><article><div class="compare-title"><h3>First attempt</h3><span>Sample 01</span></div><video id="compare-first" controls playsinline muted loop preload="metadata" src="assets/wrong_try_marked_colored.mp4" poster="assets/wrong_try_marked_colored.jpg" aria-label="First attempt with feedback overlay"></video><div class="comparison-note"><span class="status-dot red"></span><div><strong>Shoulders flagged</strong><p>The original sample highlights shoulders for attention and biceps for improvement.</p></div></div></article><article><div class="compare-title"><h3>Second attempt</h3><span>Sample 02</span></div><video id="compare-second" controls playsinline muted loop preload="metadata" src="assets/correct_try_marked_colored.mp4" poster="assets/correct_try_marked_colored.jpg" aria-label="Second attempt with feedback overlay"></video><div class="comparison-note"><span class="status-dot green"></span><div><strong>Shoulders move into green</strong><p>The second sample marks shoulders, triceps, core, and chest in green. Biceps still need work.</p></div></div></article></div>
+      <p class="compare-caption">Prerecorded examples and preset labels from the mobile prototype; no new analysis is performed here.</p>
+      <button class="subtle" data-view="analysis">← Back to analysis</button>
+    </section>
+
+    <footer><p><strong>Presentation demo.</strong> Sample overlays and feedback are prerecorded, not live AI analysis. This demo doesn’t assess injury risk.</p><a href="https://github.com/Zhandolia/Muscle-Intelligence" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">↗</span></a></footer>
+  </main>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript><p>This interactive demo needs JavaScript. Enable it to explore the sample workflow.</p></noscript>
+</body>
+</html>

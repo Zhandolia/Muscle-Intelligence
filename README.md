@@ -1,5 +1,7 @@
 # Muscle Intelligence
 
+**[Open the interactive browser demo](https://zhandolia.github.io/Muscle-Intelligence/)** — a presentation of the mobile prototype's sample-video workflow. Uses prerecorded overlays and preset feedback; does not perform live analysis. See [demo documentation](docs/README.md).
+
 <div align="center">
 
 **A cutting-edge fitness application that leverages computer vision and machine learning to analyze exercise form in real-time, helping users perfect their technique and prevent injuries.**
